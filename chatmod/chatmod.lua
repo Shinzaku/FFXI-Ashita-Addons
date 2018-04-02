@@ -20,11 +20,11 @@ pcolors = {["self"] = 256,["p1"] = 200,["p2"]  =127,["p3"]  = 141,["p4"]  = 325,
 filter = {100,31,4}
 ignore = {94,202,310,38,53,170,171,172,173,174,175,176,177,178,565,582}
 
-chatfiltervars = {    ["self"]   = {["start_spell"] = false,["finish_spell"]= false,["melee"] = false,["ws"]= false,["ranged"]= false,["abilitys"]= false,["readies"]= false,["effect_wear"]= false},
-                       ["party"]  = {["start_spell"] = false,["finish_spell"]= false,["melee"] = false,["ws"]= false,["ranged"]= false,["abilitys"]= false,["readies"]= false,["effect_wear"]= false},
-                       ["allies"] = {["start_spell"] = false,["finish_spell"]= false,["melee"] = false,["ws"]= false,["ranged"]= false,["abilitys"]= false,["readies"]= false,["effect_wear"]= false},
-                       ["foe"] = {["start_spell"] = false,["finish_spell"]= false,["melee"] = false,["ws"]= false,["ranged"]= false,["abilitys"]= false,["readies"]= false,["effect_wear"]= false},
-                       ["other"]  = {["start_spell"] = false,["finish_spell"]= false,["melee"] = false,["ws"]= false,["ranged"]= false,["abilitys"]= false,["readies"]= false,["effect_wear"]= false}}
+chatfiltervars = {    ["self"]   = {["start_spell"] = false,["finish_spell"]= false,["melee"] = false,["ws"]= false,["ranged"]= false,["abilities"]= false,["readies"]= false,["effect_wear"]= false},
+                       ["party"]  = {["start_spell"] = false,["finish_spell"]= false,["melee"] = false,["ws"]= false,["ranged"]= false,["abilities"]= false,["readies"]= false,["effect_wear"]= false},
+                       ["allies"] = {["start_spell"] = false,["finish_spell"]= false,["melee"] = false,["ws"]= false,["ranged"]= false,["abilities"]= false,["readies"]= false,["effect_wear"]= false},
+                       ["foe"] = {["start_spell"] = false,["finish_spell"]= false,["melee"] = false,["ws"]= false,["ranged"]= false,["abilities"]= false,["readies"]= false,["effect_wear"]= false},
+                       ["other"]  = {["start_spell"] = false,["finish_spell"]= false,["melee"] = false,["ws"]= false,["ranged"]= false,["abilities"]= false,["readies"]= false,["effect_wear"]= false}}
 
 chatfiltervarsGui = {
 	-- Editor vars
@@ -111,24 +111,24 @@ ashita.register_event('load', function()
     --Gui_CreateBar("Chat Mod Settings", 100, 100, 225, 350)
     --Gui_Define(" 'Chat Mod Settings' valueswidth=fit color='0 0 153' iconified=true")
     --Self
-    local tempvar = ashita.settings.load(_addon.path .. 'settings/chatfilters.json') or {["self"]   = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false},
-                                                                                  ["party"]  = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false},
-                                                                                  ["allies"] = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false},
-                                                                                  ["foe"]    = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false},
-                                                                                  ["other"]  = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false}}
+    local tempvar = ashita.settings.load(_addon.path .. 'settings/chatfilters.json') or {["self"]   = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false},
+                                                                                  ["party"]  = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false},
+                                                                                  ["allies"] = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false},
+                                                                                  ["foe"]    = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false},
+                                                                                  ["other"]  = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false}}
     local temp1 = {"self","party","allies","foe","other"}
-    local temp2 = {"start_spell","finish_spell","melee","ws","ranged","abilitys","readies","effect_wear"}
+    local temp2 = {"start_spell","finish_spell","melee","ws","ranged","abilities","readies","effect_wear"}
     for i = 1, #temp1 do
         for j = 1, #temp2 do
             chatfiltervars[temp1[i]][temp2[j]] = tempvar[temp1[i]][temp2[j]];
         end
     end
-    --Gui_NewReadWrite("Chat Mod Settings", "s_ss", 1, chatfiltervars["self"]["start_spell"],"label='Start Spell' group='Self'")
-    --Gui_NewReadWrite("Chat Mod Settings", "s_fs", 1, chatfiltervars["self"]["finish_spell"],"label='Finish Spell' group='Self'")
+    -- Gui_NewReadWrite("Chat Mod Settings", "s_ss", 1, chatfiltervars["self"]["start_spell"],"label='Start Spell' group='Self'")
+    -- Gui_NewReadWrite("Chat Mod Settings", "s_fs", 1, chatfiltervars["self"]["finish_spell"],"label='Finish Spell' group='Self'")
     -- Gui_NewReadWrite("Chat Mod Settings", "s_m", 1, chatfiltervars["self"]["melee"],"label='Melee' group='Self'")
     -- Gui_NewReadWrite("Chat Mod Settings", "s_ws", 1, chatfiltervars["self"]["ws"],"label='Weapon Skill' group='Self'")
     -- Gui_NewReadWrite("Chat Mod Settings", "s_ra", 1, chatfiltervars["self"]["ranged"],"label='Ranged Attack' group='Self'")
-    -- Gui_NewReadWrite("Chat Mod Settings", "s_ab", 1, chatfiltervars["self"]["abilitys"],"label='Abilitys' group='Self'")
+    -- Gui_NewReadWrite("Chat Mod Settings", "s_ab", 1, chatfiltervars["self"]["abilities"],"label='Abilities' group='Self'")
     -- Gui_NewReadWrite("Chat Mod Settings", "s_re", 1, chatfiltervars["self"]["readies"],"label='Readies' group='Self'")
     -- Gui_NewReadWrite("Chat Mod Settings", "s_ew", 1, chatfiltervars["self"]["effect_wear"],"label='Effects wearing' group='Self'")
     -- Gui_Define(string.format(" 'Chat Mod Settings'/Self opened=false"))
@@ -138,7 +138,7 @@ ashita.register_event('load', function()
     -- Gui_NewReadWrite("Chat Mod Settings", "p_m", 1, chatfiltervars["party"]["melee"],"label='Melee' group='Party'")
     -- Gui_NewReadWrite("Chat Mod Settings", "p_ws", 1, chatfiltervars["party"]["ws"],"label='Weapon Skill' group='Party'")
     -- Gui_NewReadWrite("Chat Mod Settings", "p_ra", 1, chatfiltervars["party"]["ranged"],"label='Ranged Attack' group='Party'")
-    -- Gui_NewReadWrite("Chat Mod Settings", "p_ab", 1, chatfiltervars["party"]["abilitys"],"label='Abilitys' group='Party'")
+    -- Gui_NewReadWrite("Chat Mod Settings", "p_ab", 1, chatfiltervars["party"]["abilities"],"label='Abilities' group='Party'")
     -- Gui_NewReadWrite("Chat Mod Settings", "p_re", 1, chatfiltervars["party"]["readies"],"label='Readies' group='Party'")
     -- Gui_NewReadWrite("Chat Mod Settings", "p_ew", 1, chatfiltervars["party"]["effect_wear"],"label='Effects wearing' group='Party'")
     -- Gui_Define(string.format(" 'Chat Mod Settings'/Party opened=false"))
@@ -148,7 +148,7 @@ ashita.register_event('load', function()
     -- Gui_NewReadWrite("Chat Mod Settings", "a_m", 1, chatfiltervars["allies"]["melee"],"label='Melee' group='Allies'")
     -- Gui_NewReadWrite("Chat Mod Settings", "a_ws", 1, chatfiltervars["allies"]["ws"],"label='Weapon Skill' group='Allies'")
     -- Gui_NewReadWrite("Chat Mod Settings", "a_ra", 1, chatfiltervars["allies"]["ranged"],"label='Ranged Attack' group='Allies'")
-    -- Gui_NewReadWrite("Chat Mod Settings", "a_ab", 1, chatfiltervars["allies"]["abilitys"],"label='Abilitys' group='Allies'")
+    -- Gui_NewReadWrite("Chat Mod Settings", "a_ab", 1, chatfiltervars["allies"]["abilities"],"label='Abilities' group='Allies'")
     -- Gui_NewReadWrite("Chat Mod Settings", "a_re", 1, chatfiltervars["allies"]["readies"],"label='Readies' group='Allies'")
     -- Gui_NewReadWrite("Chat Mod Settings", "a_ew", 1, chatfiltervars["allies"]["effect_wear"],"label='Effects wearing' group='Allies'")
     -- Gui_Define(string.format(" 'Chat Mod Settings'/Allies opened=false"))
@@ -158,7 +158,7 @@ ashita.register_event('load', function()
     -- Gui_NewReadWrite("Chat Mod Settings", "f_m", 1, chatfiltervars["foe"]["melee"],"label='Melee' group='Foes'")
     -- Gui_NewReadWrite("Chat Mod Settings", "f_ws", 1, chatfiltervars["foe"]["ws"],"label='Weapon Skill' group='Foes'")
     -- Gui_NewReadWrite("Chat Mod Settings", "f_ra", 1, chatfiltervars["foe"]["ranged"],"label='Ranged Attack' group='Foes'")
-    -- Gui_NewReadWrite("Chat Mod Settings", "f_ab", 1, chatfiltervars["foe"]["abilitys"],"label='Abilitys' group='Foes'")
+    -- Gui_NewReadWrite("Chat Mod Settings", "f_ab", 1, chatfiltervars["foe"]["abilities"],"label='Abilities' group='Foes'")
     -- Gui_NewReadWrite("Chat Mod Settings", "f_re", 1, chatfiltervars["foe"]["readies"],"label='Readies' group='Foes'")
     -- Gui_NewReadWrite("Chat Mod Settings", "f_ew", 1, chatfiltervars["foe"]["effect_wear"],"label='Effects wearing' group='Foes'")
     -- Gui_Define(string.format(" 'Chat Mod Settings'/Foes opened=false"))
@@ -168,7 +168,7 @@ ashita.register_event('load', function()
     -- Gui_NewReadWrite("Chat Mod Settings", "o_m", 1, chatfiltervars["other"]["melee"],"label='Melee' group='Others'")
     -- Gui_NewReadWrite("Chat Mod Settings", "o_ws", 1, chatfiltervars["other"]["ws"],"label='Weapon Skill' group='Others'")
     -- Gui_NewReadWrite("Chat Mod Settings", "o_ra", 1, chatfiltervars["other"]["ranged"],"label='Ranged Attack' group='Others'")
-    -- Gui_NewReadWrite("Chat Mod Settings", "o_ab", 1, chatfiltervars["other"]["abilitys"],"label='Abilitys' group='Others'")
+    -- Gui_NewReadWrite("Chat Mod Settings", "o_ab", 1, chatfiltervars["other"]["abilities"],"label='Abilities' group='Others'")
     -- Gui_NewReadWrite("Chat Mod Settings", "o_re", 1, chatfiltervars["other"]["readies"],"label='Readies' group='Others'")
     -- Gui_NewReadWrite("Chat Mod Settings", "o_ew", 1, chatfiltervars["other"]["effect_wear"],"label='Effects wearing' group='Others'")
     -- Gui_Define(string.format(" 'Chat Mod Settings'/Others opened=false"))  
@@ -181,9 +181,9 @@ ashita.register_event('incoming_packet', function(id, size, packet, packet_modif
         _ , am.actor_id = pack.unpack(packet,"I",0x05)
         _ , am.target_id = pack.unpack(packet,"I",0x09)
         _ , am.param_1 = pack.unpack(packet,"I",0x0D)
-        -- _ , am.param_2 = pack.unpack(packet,"H",0x11)%2^9 -- First 7 bits
-        -- _ , am.param_3 = math.floor(pack.unpack(packet,"I",0x11)/2^5) -- Rest
-        _ , am.param_2 = pack.unpack(packet,"I",0x011)
+        _ , am.param_2 = pack.unpack(packet,"H",0x11)%2^9 -- First 7 bits
+        --_ , am.param_3 = math.floor(pack.unpack(packet,"I",0x11)/2^5) -- Rest
+        --_ , am.param_2 = pack.unpack(packet,"I",0x011)
         _ , am.actor_index = pack.unpack(packet,"H",0x15)
         _ , am.target_index = pack.unpack(packet,"H",0x17)
         _ , am.message_id = pack.unpack(packet,"I",0x19)
@@ -212,7 +212,7 @@ ashita.register_event('incoming_packet', function(id, size, packet, packet_modif
             if(string.find(text,'$numbe2')    ~= nil)then text =string.gsub(text,'$numbe2',  am.param_2 ) end
             if(string.find(text,'$status')    ~= nil)then text =string.gsub(text,'$status',  buff ) end    
             if(string.find(text,'$spell')    ~= nil)then text =string.gsub(text,'$spell',    AshitaCore:GetResourceManager():GetSpellById(am.param_1).Name[2]) end            
-            if(string.find(text,'$weapon_skill')   ~= nil)then text =string.gsub(text,'$weapon_skill',  getaname(am.actor_id ,am.param_1) ) end
+            if(string.find(text,'$weapon_skill')   ~= nil)then text =string.gsub(text,'$weapon_skill',  getmaname(am.actor_id ,am.param_1) ) end
             if(string.find(text,'$item2')    ~= nil)then text =string.gsub(text,'$item2',    AshitaCore:GetResourceManager():GetItemById(am.param_2).Name) end            
             if(string.find(text,'$item')    ~= nil)then text =string.gsub(text,'$item',   AshitaCore:GetResourceManager():GetItemById(am.param_1).Name) end            
             showmessage(121,am.actor_id,am.target_id,text)
@@ -373,13 +373,13 @@ end
 -- desc: Called when our addon is unloaded.
 ---------------------------------------------------------------------------------------------------
 ashita.register_event('unload', function() 
-    local tempvar = {["self"]   = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false},
-                     ["party"]  = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false},
-                     ["allies"] = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false},
-                     ["foe"]    = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false},
-                     ["other"]  = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false}}
+    local tempvar = {["self"]   = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false},
+                     ["party"]  = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false},
+                     ["allies"] = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false},
+                     ["foe"]    = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false},
+                     ["other"]  = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false}}
     local temp1 = {"self","party","allies","foe","other"}
-    local temp2 = {"start_spell","finish_spell","melee","ws","ranged","abilitys","readies","effect_wear"}
+    local temp2 = {"start_spell","finish_spell","melee","ws","ranged","abilities","readies","effect_wear"}
     for i = 1, #temp1 do
         for j = 1, #temp2 do
             tempvar[temp1[i]][temp2[j]] = chatfiltervars[temp1[i]][temp2[j]]
@@ -409,13 +409,13 @@ ashita.register_event('command', function(cmd, nType)
         print(line)
     end
     if(cmd == "/cmod save")then
-        local tempvar = {["self"]   = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false},
-                         ["party"]  = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false},
-                         ["allies"] = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false},
-                         ["foe"]    = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false},
-                         ["other"]  = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilitys"]=false,["readies"]=false,["effect_wear"]=false}}
+        local tempvar = {["self"]   = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false},
+                         ["party"]  = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false},
+                         ["allies"] = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false},
+                         ["foe"]    = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false},
+                         ["other"]  = {["start_spell"] = false,["finish_spell"]=false,["melee"] = false,["ws"]=false,["ranged"]=false,["abilities"]=false,["readies"]=false,["effect_wear"]=false}}
         local temp1 = {"self","party","allies","foe","other"}
-        local temp2 = {"start_spell","finish_spell","melee","ws","ranged","abilitys","readies","effect_wear"}
+        local temp2 = {"start_spell","finish_spell","melee","ws","ranged","abilities","readies","effect_wear"}
         for i = 1, #temp1 do
             for j = 1, #temp2 do
                 tempvar[temp1[i]][temp2[j]] = chatfiltervars[temp1[i]][temp2[j]]
@@ -648,7 +648,7 @@ function fspell(act)
 end
 function ja(act)
     local mid = act.targets[1].actions[1].message
-    if(chatfiltervars[getrelations(act.actor_id)]["abilitys"])then
+    if(chatfiltervars[getrelations(act.actor_id)]["abilities"])then
         for i = 1,act.target_count do
             for n = 1,act.targets[i].action_count do
                 act.targets[i].actions[n].message = 0
@@ -697,7 +697,7 @@ function swstp(act)
 			local abil = AshitaCore:GetResourceManager():GetAbilityById(act.targets[1].actions[1].param).Name[2];	
             text = "[" .. get_name(act.actor_id) .. "] readies " .. abil .. " --> " ..  get_name(act.targets[1].id)
         else  --  ..
-            text ="[" .. get_name(act.actor_id) .. "] readies " .. getaname(act.actor_id,act.targets[1].actions[1].param) ..  " --> " ..  get_name(act.targets[1].id)
+            text ="[" .. get_name(act.actor_id) .. "] readies " .. getmaname(act.actor_id,act.targets[1].actions[1].param) ..  " --> " ..  get_name(act.targets[1].id)
             act.targets[1].actions[1].message = 0
         end
     else
@@ -705,7 +705,7 @@ function swstp(act)
 			local abil = AshitaCore:GetResourceManager():GetAbilityById(act.targets[1].actions[1].param).Name[2];
             text = "[" .. get_name(act.actor_id) .. "] " .. abil  .. " Failed"
         else
-            text = "[" .. get_name(act.actor_id) .. "] " .. getaname(act.actor_id,act.targets[1].actions[1].param) ..  " Failed"
+            text = "[" .. get_name(act.actor_id) .. "] " .. getjaname(act.actor_id,act.targets[1].actions[1].param) ..  " Failed"
             act.targets[1].actions[1].message = 0
         end
     end
@@ -714,7 +714,7 @@ function swstp(act)
 end
 function ftp(act)
     local mid = act.targets[1].actions[1].message
-    if(chatfiltervars[getrelations(act.actor_id)]["abilitys"])then
+    if(chatfiltervars[getrelations(act.actor_id)]["abilities"])then
         for i = 1,act.target_count do
             for n = 1,act.targets[i].action_count do
                 act.targets[i].actions[n].message = 0
@@ -732,7 +732,7 @@ function ftp(act)
         for i = 2,#targets do
             names = names .. ", " .. targets[i][1]
         end
-        local skillname = getaname(act.actor_id,act.param)
+        local skillname = getmaname(act.actor_id,act.param)
         if(string.find(text,'$actor')    ~= nil)then text =string.gsub(text,'$actor',   get_name(act.actor_id) ) end
         if(string.find(text,'$target')   ~= nil)then text =string.gsub(text,'$target',  names ) end
         if(string.find(text,'$weapon_skill')   ~= nil)then text =string.gsub(text,'$weapon_skill',  skillname ) end
@@ -756,13 +756,13 @@ function pet(act)
     for i = 2,#targets do
         names = names .. ", " .. targets[i][1]
     end
-	if (string.find(text, '$ability') ~= nil) then text = string.gsub(text, '$ability', getaname(act.actor_id, act.param)) end;
+    if (string.find(text, '$ability') ~= nil) then text = string.gsub(text, '$ability', getjaname(act.actor_id, act.param)) end;
     if(string.find(text,'$status')    ~= nil)then text =string.gsub(text,'$status',   buffIDtoName(act.targets[1].actions[1].param) ) end
     if(string.find(text,'$number')   ~= nil)then text =string.gsub(text,'$number',   act.targets[1].actions[1].param ) end
     if(string.find(text,'$actor')    ~= nil)then text =string.gsub(text,'$actor',    "["..get_name(act.actor_id).."]") end
     if(string.find(text,'$spell')    ~= nil)then text =string.gsub(text,'$spell',    AshitaCore:GetResourceManager():GetSpellById(act.param).Name[2]) end
     if(string.find(text,'$target')   ~= nil)then text =string.gsub(text,'$target',  names)  end
-    if(string.find(text,'$weapon_skill')   ~= nil)then text =string.gsub(text,'$weapon_skill',  getaname(act.actor_id,act.param))  end
+    if(string.find(text,'$weapon_skill')   ~= nil)then text =string.gsub(text,'$weapon_skill',  getmaname(act.actor_id,act.param))  end
     showmessage(50,act.actor_id,act.targets[1].id,text)
     return act
 end    
