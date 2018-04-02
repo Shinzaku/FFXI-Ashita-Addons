@@ -181,9 +181,9 @@ ashita.register_event('incoming_packet', function(id, size, packet, packet_modif
         _ , am.actor_id = pack.unpack(packet,"I",0x05)
         _ , am.target_id = pack.unpack(packet,"I",0x09)
         _ , am.param_1 = pack.unpack(packet,"I",0x0D)
-        _ , am.param_2 = pack.unpack(packet,"H",0x11)%2^9 -- First 7 bits
-        --_ , am.param_3 = math.floor(pack.unpack(packet,"I",0x11)/2^5) -- Rest
-        --_ , am.param_2 = pack.unpack(packet,"I",0x011)
+        -- _ , am.param_2 = pack.unpack(packet,"H",0x11)%2^9 -- First 7 bits
+        -- _ , am.param_3 = math.floor(pack.unpack(packet,"I",0x11)/2^5) -- Rest
+        _ , am.param_2 = pack.unpack(packet,"I",0x011)
         _ , am.actor_index = pack.unpack(packet,"H",0x15)
         _ , am.target_index = pack.unpack(packet,"H",0x17)
         _ , am.message_id = pack.unpack(packet,"I",0x19)
