@@ -152,7 +152,7 @@ local messages = {
     },
     z254 = {
         name = 'Abyssea - Grauberg',
-        offset = 7312,
+        offset = 7318,
         pearl_ebon_gold_silvery = 0,
         azure_ruby_amber = 1,
         visitant_status_update = 9,
