@@ -169,7 +169,7 @@ local messages = {
     },
     z253 = {
         name = 'Abyssea - Uleguerand',
-        offset = 7212,
+        offset = 7218,
         pearl_ebon_gold_silvery = 0,
         azure_ruby_amber = 1,
         visitant_status_update = 9,
