@@ -51,6 +51,25 @@ ashita.register_event('load', function()
 end);
 
 ashita.register_event('unload', function()
+    -- Retrieve the on-screen position and update our settings.
+    -- This covers the case where the user shift-drags the text around manually.
+    settings.text_box_settings.pos.x = f:GetPositionX();
+    settings.text_box_settings.pos.y = f:GetPositionY();
+
+    local charName = AshitaCore:GetDataManager():GetParty():GetMemberName(0);
+    if (charName ~= nil and charName ~= "" and charLoaded == false) then
+        -- store per character if there is one
+        ashita.settings.save(_addon.path .. '/data/settings_' .. charName .. '.json', settings);
+    end;
+
+    -- Also update the global settings (for everyone loading pointwatch from Default.txt
+    -- before a character is even available..)
+    settings = ashita.settings.load(_addon.path .. '/data/settings.json');
+    settings.text_box_settings.pos.x = f:GetPositionX();
+    settings.text_box_settings.pos.y = f:GetPositionY();
+    ashita.settings.save(_addon.path .. '/data/settings.json', settings);
+
+    -- clean up
     AshitaCore:GetFontManager():Delete('pointwatch_text');
 end);
 

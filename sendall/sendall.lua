@@ -72,7 +72,7 @@ end;
 
 function sendCmd(name)		
 	if (name ~= currPlayer) then
-		AshitaCore:GetChatManager():QueueCommand("/servo sendto " .. name .. " " .. currCmd, 1);	
+		AshitaCore:GetChatManager():QueueCommand("/ms sendto " .. name .. " " .. currCmd, 1);	
 	else
 		AshitaCore:GetChatManager():QueueCommand(currCmd, 1);	
 	end;
@@ -90,17 +90,11 @@ ashita.register_event('command', function(command, nType)
 			currCmd = table.concat(args," ");
 			__cycle = 1;
 
-			for i = 1, 4 do
+			for i = 1, #partyList do
 				addToQueue(partyList[i]);
 			end;
-		elseif (args[1] == "/sendallq") then		
-			table.remove(args, 1);
-			currCmd = table.concat(args," ");
-			__cycle = 0;
-
-			for i = 1, 4 do
-				addToQueue(partyList[i]);
-			end;	
+			
+			return true;
 		end;
 	end;
     return false;
